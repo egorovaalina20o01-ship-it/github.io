@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Китай с Алиной Егоровой</title>
+<style>
+:root {
+  --white: #ffffff;
+  --green-dark: #2d6a4f;
+  --green-mid: #52b788;
+  --green-light: #b7e4c7;
+  --salad: #d8f3dc;
+  --salad-light: #f1faf4;
+  --yellow: #f9c74f;
+  --yellow-soft: #fff3cd;
+  --text-dark: #1b4332;
+  --text-body: #2d3a2e;
+  --gray: #6c757d;
+  --shadow: 0 4px 20px rgba(45,106,79,0.08);
+  --shadow-hover: 0 8px 30px rgba(45,106,79,0.15);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--white);
+  color: var(--text-body);
+  line-height: 1.7;
+  scroll-behavior: smooth;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid var(--green-light);
+  padding: 0;
+}
+.navbar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+}
+.navbar-logo {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--green-dark);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.navbar-logo span {
+  color: var(--yellow);
+  background: var(--green-dark);
+  padding: 2px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+.navbar-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+.navbar-links a {
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color .2s;
+  position: relative;
+}
+.navbar-links a:hover { color: var(--green-mid); }
+.navbar-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 2px;
+  background: var(--green-mid);
+  transition: width .3s;
+}
+.navbar-links a:hover::after { width: 100%; }
+.burger { display: none; font-size: 1.5rem; cursor: pointer; color: var(--green-dark); background: none; border: none; }
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  height: 85vh;
+  min-height: 500px;
+  background: url('https://commons.wikimedia.org/wiki/Special:FilePath/The_Bund,_Shanghai_at_night.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(45,106,79,0.65), rgba(27,67,50,0.55));
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  padding: 0 24px;
+  max-width: 700px;
+}
+.hero-content h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+.hero-content h1 .accent {
+  color: var(--yellow);
+}
+.hero-content p {
+  font-size: 1.15rem;
+  opacity: 0.92;
+  margin-bottom: 28px;
+}
+.hero-btn {
+  display: inline-block;
+  padding: 14px 36px;
+  background: var(--yellow);
+  color: var(--green-dark);
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: transform .2s, box-shadow .2s;
+}
+.hero-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(249,199,79,0.4);
+}
+
+/* ===== SECTIONS ===== */
+.section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 70px 24px;
+}
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--green-dark);
+  margin-bottom: 12px;
+  text-align: center;
+}
+.section-subtitle {
+  text-align: center;
+  color: var(--gray);
+  font-size: 1.05rem;
+  margin-bottom: 40px;
+}
+.section-divider {
+  width: 60px; height: 4px;
+  background: var(--green-mid);
+  margin: 0 auto 30px;
+  border-radius: 2px;
+}
+
+/* ===== ROUTE MAP ===== */
+.route-banner {
+  background: linear-gradient(135deg, var(--salad), var(--salad-light));
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.route-banner h3 {
+  color: var(--green-dark);
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+.route-cities {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.route-city {
+  background: white;
+  padding: 20px 36px;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  font-weight: 700;
+  color: var(--green-dark);
+  font-size: 1.1rem;
+}
+.route-arrow {
+  font-size: 2rem;
+  color: var(--green-mid);
+}
+.route-info {
+  color: var(--text-dark);
+  margin-top: 16px;
+  font-size: 0.95rem;
+}
+
+/* ===== CITY SECTIONS ===== */
+.city-section {
+  background: var(--salad-light);
+  border-radius: 24px;
+  padding: 50px 40px;
+  margin-bottom: 30px;
+}
+.city-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+.city-header h2 {
+  font-size: 1.8rem;
+  color: var(--green-dark);
+}
+.city-icon {
+  width: 48px; height: 48px;
+  background: var(--green-mid);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+.city-history {
+  font-size: 0.98rem;
+  color: var(--text-body);
+  margin-bottom: 30px;
+  line-height: 1.8;
+}
+
+/* ===== ATTRACTION CARDS ===== */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+.card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform .25s, box-shadow .25s;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.card-body {
+  padding: 20px;
+}
+.card-body h4 {
+  color: var(--green-dark);
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+.card-body h4 small {
+  display: block;
+  color: var(--gray);
+  font-size: 0.8rem;
+  font-weight: 400;
+  margin-top: 2px;
+}
+.card-body p {
+  font-size: 0.92rem;
+  color: var(--text-body);
+  margin-bottom: 12px;
+}
+.card-info {
+  background: var(--salad);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+}
+.card-info-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+  color: var(--text-dark);
+}
+.card-info-row:last-child { margin-bottom: 0; }
+.card-info-row .icon { font-size: 1rem; }
+
+/* ===== FOOD SECTION ===== */
+.food-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 20px;
+}
+.food-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+}
+.food-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.food-card-body {
+  padding: 18px;
+}
+.food-card-body h4 {
+  color: var(--green-dark);
+  margin-bottom: 6px;
+}
+.food-card-body p {
+  font-size: 0.9rem;
+  color: var(--text-body);
+}
+
+/* ===== PRACTICAL TIPS ===== */
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+.tip-card {
+  background: white;
+  border: 2px solid var(--green-light);
+  border-radius: 14px;
+  padding: 24px;
+  transition: border-color .2s;
+}
+.tip-card:hover { border-color: var(--green-mid); }
+.tip-icon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+.tip-card h4 {
+  color: var(--green-dark);
+  margin-bottom: 8px;
+  font-size: 1.05rem;
+}
+.tip-card p {
+  font-size: 0.9rem;
+  color: var(--text-body);
+}
+
+/* ===== PHRASEBOOK ===== */
+.phrasebook {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.phrasebook th {
+  background: var(--green-dark);
+  color: white;
+  padding: 14px 18px;
+  text-align: left;
+  font-size: 0.95rem;
+}
+.phrasebook th:nth-child(2) { color: var(--yellow); }
+.phrasebook td {
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--salad);
+  font-size: 0.92rem;
+}
+.phrasebook tr:last-child td { border-bottom: none; }
+.phrasebook tr:hover { background: var(--salad-light); }
+.phrasebook td:nth-child(2) {
+  font-weight: 600;
+  color: var(--green-dark);
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+}
+.checklist h4 {
+  color: var(--green-dark);
+  margin-bottom: 16px;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+.checklist-item input[type="checkbox"] {
+  width: 20px; height: 20px;
+  accent-color: var(--green-mid);
+  cursor: pointer;
+}
+.checklist-item.checked span {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background: var(--green-dark);
+  color: white;
+  padding: 50px 24px 24px;
+  margin-top: 40px;
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+.footer-col h5 {
+  color: var(--yellow);
+  margin-bottom: 14px;
+  font-size: 1.05rem;
+}
+.footer-col a {
+  display: block;
+  color: var(--salad);
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  transition: color .2s;
+}
+.footer-col a:hover { color: var(--yellow); }
+.footer-contacts p {
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  color: var(--salad);
+}
+.footer-contacts a {
+  color: var(--yellow);
+  text-decoration: none;
+}
+.footer-sources {
+  border-top: 1px solid rgba(255,255,255,0.15);
+  padding-top: 20px;
+  margin-top: 20px;
+}
+.footer-sources h5 {
+  color: var(--yellow);
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+.footer-sources a {
+  display: inline-block;
+  color: var(--salad);
+  text-decoration: none;
+  font-size: 0.82rem;
+  margin: 3px 12px 3px 0;
+}
+.footer-sources a:hover { color: var(--yellow); }
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  font-size: 0.85rem;
+  color: var(--green-light);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .navbar-links { display: none; }
+  .burger { display: block; }
+  .navbar-links.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: white;
+    padding: 20px;
+    gap: 16px;
+    border-bottom: 2px solid var(--green-light);
+  }
+  .hero-content h1 { font-size: 1.8rem; }
+  .hero-content p { font-size: 1rem; }
+  .food-section { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .route-cities { flex-direction: column; }
+  .route-arrow { transform: rotate(90deg); }
+  .city-section { padding: 30px 20px; }
+  .section { padding: 40px 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="#home" class="navbar-logo">🇨🇳 Китай <span>с Алиной</span></a>
+    <button class="burger" onclick="document.querySelector('.navbar-links').classList.toggle('active')">☰</button>
+    <ul class="navbar-links">
+      <li><a href="#home">Главная</a></li>
+      <li><a href="#shanghai">Шанхай</a></li>
+      <li><a href="#xian">Сиань</a></li>
+      <li><a href="#practice">Практика</a></li>
+      <li><a href="#phrasebook">Разговорник</a></li>
+      <li><a href="#checklists">Чек-листы</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="home" class="hero">
+  <div class="hero-content">
+    <h1>Китай с <span class="accent">Алиной Егоровой</span></h1>
+    <p>Тревел-гайд по двум удивительным городам: Шанхаю и Сианю. Всё, что нужно знать — от достопримечательностей до фраз на китайском.</p>
+    <a href="#shanghai" class="hero-btn">Начать путешествие →</a>
+  </div>
+</section>
+
+<!-- ===== ROUTE ===== -->
+<section class="section" style="padding-top:40px;padding-bottom:20px;">
+  <div class="route-banner">
+    <h3>🗺️ Маршрут путешествия</h3>
+    <div class="route-cities">
+      <div class="route-city">📍 Шанхай</div>
+      <div class="route-arrow">✈️</div>
+      <div class="route-city">📍 Сиань</div>
+    </div>
+    <p class="route-info">Скоростной поезд: ~6–7 часов, от 550 юаней (второй класс) до 1100 юаней (первый класс). Билеты бронировать заранее на trip.com или в кассе.</p>
+  </div>
+</section>
+
+<!-- ===== SHANGHAI ===== -->
+<section id="shanghai" class="section" style="padding-top:20px;">
+  <h2 class="section-title">Шанхай</h2>
+  <div class="section-divider"></div>
+  <p class="section-subtitle">Современный мегаполис Восточного Китая</p>
+
+  <div class="city-section">
+    <div class="city-header">
+      <div class="city-icon">🏙️</div>
+      <h2>Шанхай — деловая столица Китая</h2>
+    </div>
+    <div class="city-history">
+      <p>Шанхай расположен в дельте реки Янцзы, на восточном побережье Китая. Сегодня это один из крупнейших городов страны с населением около 25 миллионов человек и крупнейший в мире морской порт. До V века нашей эры здесь существовали лишь небольшие рыбацкие деревни, а статус уезда город получил только в 1291 году. После Опиумной войны (1839–1842) Шанхай стал «договорным портом», здесь появились британская, французская и американская концессии. Это определило уникальный облик города, где колониальные здания европейских стилей соседствуют с традиционными китайскими кварталами. В 1990-х годах район Пудун был объявлен особой экономической зоной и за тридцать лет превратился в финансовый центр с небоскрёбами.</p>
+    </div>
+
+    <h3 style="color:var(--green-dark);margin-bottom:20px;">🏛️ Достопримечательности</h3>
+    <div class="cards">
+      <div class="card">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/The_Bund,_Shanghai_at_night.jpg" alt="Набережная Вайтань" loading="lazy">
+        <div class="card-body">
+          <h4>Набережная Вайтань <small>The Bund · 外滩</small></h4>
+          <p>Символ Шанхая: променад вдоль реки Хуанпу с 52 историческими зданиями начала XX века и видом на небоскрёбы Пудуна. Особенно красива вечером.</p>
+          <div class="card-info">
+            <div class="card-info-row"><span class="icon">🎫</span> Бесплатно, круглосуточно</div>
+            <div class="card-info-row"><span class="icon">🚇</span> Метро: East Nanjing Road (линии 2, 10)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Shanghai,_Yu_Garden.jpg" alt="Сад Юйюань" loading="lazy">
+        <div class="card-body">
+          <h4>Сад Юйюань <small>Yu Garden · 豫园</small></h4>
+          <p>Классический китайский сад XVI века: пруды с карпами, каменные гроты, мост Зигзаг. Вокруг — старинный торговый квартал с лавками чая и сувениров.</p>
+          <div class="card-info">
+            <div class="card-info-row"><span class="icon">🎫</span> 30–40 юаней, 8:30–17:00</div>
+            <div class="card-info-row"><span class="icon">🚇</span> Метро: Yuyuan Garden (линии 10, 14)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Shanghai_pudong_skyline.jpg" alt="Пудун" loading="lazy">
+        <div class="card-body">
+          <h4>Район Пудун <small>Pudong · 浦东</small></h4>
+          <p>Финансовое сердце Шанхая: Шанхайская башня (632 м), Всемирный финансовый центр (492 м), башня Цзиньмао (421 м). Из аэропорта — поезд маглев до 430 км/ч.</p>
+          <div class="card-info">
+            <div class="card-info-row"><span class="icon">🎫</span> Смотр. площадка ~180 юаней</div>
+            <div class="card-info-row"><span class="icon">🚇</span> Метро: Lujiazui (линия 2)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Shanghai_-_Nanjing_Road.jpeg" alt="Нанкинская улица" loading="lazy">
+        <div class="card-body">
+          <h4>Нанкинская улица <small>Nanjing Road · 南京路</small></h4>
+          <p>Главная торговая артерия Шанхая. Пешеходная зона с магазинами, уличной едой и неоновой подсветкой. Идёт от Народной площади до набережной Вайтань.</p>
+          <div class="card-info">
+            <div class="card-info-row"><span class="icon">🎫</span> Бесплатно</div>
+            <div class="card-info-row"><span class="icon">🚇</span> Метро: People's Square / East Nanjing Road</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="color:var(--green-dark);margin:30px 0 16px;">🍲 Кухня Шанхая</h3>
+    <div class="food-section">
+      <div class="food-card">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Steamed_dumplings.jpg" alt="Сяолунбао" loading="lazy" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Xiaolongbao.jpg/800px-Xiaolongbao.jpg'">
+        <div class="food-card-body">
+          <h4>Сяолунбао 小笼包</h4>
+          <p>Паровые пельмени с бульоном внутри. Тончайшее тесто, нежный свиной фарш и горячий суп. Есть с уксусом и имбирём.</p>
+        </div>
+      </div>
+      <div class="food-card">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Shanghai_bund_night_view.jpg" alt="Шанхай ночью" loading="lazy">
+        <div class="food-card-body">
+          <h4>Хуншаожоу 红烧肉</h4>
+          <p>Красно-жарёная свинина: куски грудинки томятся в соевом соусе, сахаре и рисовом вине до карамельного глянца и тающей текстуры.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== XIAN ===== -->
+<section id="xian" class="section" style="padding-top:20px;">
+  <h2 class="section-title">Сиань</h2>
+  <div class="section-divider"></div>
+  <p class="section-subtitle">Древняя столица и культурное сердце Китая</p>
+
+  <div class="city-section">
+    <div class="city-header">
+      <div class="city-icon">🏯</div>
+      <h2>Сиань — древняя столица</h2>
+    </div>
+    <div class="city-history">
+      <p>Сиань — столица провинции Шэньси, расположенная в центре Китая. Историческое название — Чанъань, «вечное спокойствие». Город служил столицей тринадцати династий на протяжении более тысячи лет. В эпоху династии Тан (618–907) Чанъань был одним из крупнейших городов мира с населением более миллиона человек. Сиань — восточная стартовая точка Шёлкового пути, куда прибывали персы, арабы и индийцы. В 1974 году крестьяне случайно обнаружили Терракотовую армию, что привлекло внимание всего мира.</p>
+    </div>
+
+    <h3 style="color:var(--green-dark);margin-bottom:20px;">🏛️ Достопримечательности</h3>
+    <div class="cards">
+      <div class="card">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/51714-Terracota-Army.jpg" alt="Терракотовая армия" loading="lazy">
+        <div class="card-body">
+          <h4>Терракотовая армия <small>兵马俑</small></h4>
+          <p>Более 8000 уникальных терракотовых воинов, созданных 2200 лет назад для охраны императора Цинь Шихуанди в загробной жизни. Обнаружена в 1974 году.</p>
+          <div class="card-info">
+            <div class="card-info-row"><span class="icon">🎫</span> 120 юаней, 8:30–18:00</div>
+            <div class="card-info-row"><span class="icon">🚌</span> Метро линия 9 → автобус 613</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/City_wall_of_Xi%27an.jpg" alt="Городская стена Сианя" loading="lazy">
+        <div class="card-body">
+          <h4>Городская стена <small>西安城墙</small></h4>
+          <p>Самая хорошо сохранившаяся крепостная стена в Китае, построена в XIV веке при династии Мин. Длина 13,7 км, можно гулять и кататься на велосипеде.</p>
+          <div class="card-info">
+            <div class="card-info-row"><span class="icon">🎫</span> 54 юаня, 8:00–22:00</div>
+            <div class="card-info-row"><span class="icon">🚇</span> Метро: Yongningmen (линия 2)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/The_Big_wild_Goose_Pagoda,xi%27an,CHINA_-_panoramio.jpg" alt="Большая пагода диких гусей" loading="lazy">
+        <div class="card-body">
+          <h4>Пагода диких гусей <small>大雁塔</small></h4>
+          <p>Буддийская пагода высотой 64 метра, построена в 652 году для хранения сутр, привезённых монахом Сюаньцзаном из Индии. Вечером — шоу фонтанов.</p>
+          <div class="card-info">
+            <div class="card-info-row"><span class="icon">🎫</span> Парк — бесплатно, подъём — 30 юаней</div>
+            <div class="card-info-row"><span class="icon">🚇</span> Метро: Dayanta (линии 3, 4)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Xi%27an_Muslim_Quarter.jpg" alt="Мусульманский квартал" loading="lazy">
+        <div class="card-body">
+          <h4>Мусульманский квартал <small>回民街</small></h4>
+          <p>Живое наследие Шёлкового пути: улицы с уличной едой, сухофруктами и сувенирами. Здесь живёт народность хуэй — китайцы-мусульмане. Вся еда халяльная.</p>
+          <div class="card-info">
+            <div class="card-info-row"><span class="icon">🎫</span> Бесплатно</div>
+            <div class="card-info-row"><span class="icon">🚇</span> Метро: Bell Tower (линии 2, 6)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="color:var(--green-dark);margin:30px 0 16px;">🍲 Кухня Сианя</h3>
+    <div class="food-section">
+      <div class="food-card">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Xi%27an_Muslim_Quarter.jpg" alt="Еда в Сиане" loading="lazy">
+        <div class="food-card-body">
+          <h4>Жоуцзямо 肉夹馍</h4>
+          <p>«Китайский бургер»: хрустящая лепёшка с нежной тушёной бараниной или говядиной, томлённой более трёх часов с двадцатью специями.</p>
+        </div>
+      </div>
+      <div class="food-card">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/City_wall_of_Xi%27an.jpg" alt="Сиань" loading="lazy">
+        <div class="food-card-body">
+          <h4>Бянбян-мянь 🔥</h4>
+          <p>Широкая плоская лапша, которую тянут вручную. Название записывается иероглифом из 58 черт! Подают с чили, чесноком и раскалённым маслом.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRACTICAL TIPS ===== -->
+<section id="practice" class="section">
+  <h2 class="section-title">Практические советы</h2>
+  <div class="section-divider"></div>
+  <p class="section-subtitle">Транспорт, оплата, навигация, связь и безопасность</p>
+
+  <div class="tips-grid">
+    <div class="tip-card">
+      <div class="tip-icon">🚇</div>
+      <h4>Транспорт</h4>
+      <p>Метро — самый удобный вариант в обоих городах. Указатели на английском, билеты в автоматах. Оплата — QR-код через Alipay или WeChat. Такси — через приложение DiDi (аналог Uber, есть английский интерфейс).</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">💳</div>
+      <h4>Оплата</h4>
+      <p>Главные платёжные системы — Alipay и WeChat Pay. Иностранные карты (Visa, Mastercard) можно привязать к Alipay. Российские карты не работают напрямую. Наличные юани — как запасной вариант.</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">📍</div>
+      <h4>Навигация</h4>
+      <p>Google Maps в Китае не работает. Используйте Amap (Gaode Maps) или Apple Maps. Адреса лучше держать на китайском — показывайте водителю или прохожим.</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">📶</div>
+      <h4>Интернет и связь</h4>
+      <p>Wi-Fi есть в отелях и кафе, но для авторизации нужен китайский номер. Купите сим-карту в аэропорту или оформите eSIM. WhatsApp, Instagram, Google заблокированы.</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">🔌</div>
+      <h4>Розетки</h4>
+      <p>В Китае розетки типов A, C и I. Напряжение — 220 В. Универсальный адаптер обязателен. Проверьте перед поездкой, подходит ли ваш зарядник.</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">🛡️</div>
+      <h4>Безопасность</h4>
+      <p>Китай — безопасная страна, уличная преступность невысокая. В местах скопления людей следите за сумками. Экстренные номера: 110 — полиция, 120 — скорая, 119 — пожарная.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PHRASEBOOK ===== -->
+<section id="phrasebook" class="section" style="padding-top:20px;">
+  <h2 class="section-title">Мини-разговорник</h2>
+  <div class="section-divider"></div>
+  <p class="section-subtitle">20 ключевых фраз для путешественника</p>
+
+  <table class="phrasebook">
+    <thead>
+      <tr>
+        <th>Русский</th>
+        <th>Пиньинь</th>
+        <th>Китайский</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Здравствуйте!</td><td>Nǐ hǎo!</td><td>你好！</td></tr>
+      <tr><td>Спасибо!</td><td>Xièxiè!</td><td>谢谢！</td></tr>
+      <tr><td>До свидания</td><td>Zàijiàn</td><td>再见</td></tr>
+      <tr><td>Извините</td><td>Bù hǎoyìsi</td><td>不好意思</td></tr>
+      <tr><td>Да / Нет</td><td>Shì / Bù shì</td><td>是 / 不是</td></tr>
+      <tr><td>Сколько стоит?</td><td>Duōshao qián?</td><td>多少钱？</td></tr>
+      <tr><td>Где находится туалет?</td><td>Cèsuǒ zài nǎlǐ?</td><td>厕所在哪里？</td></tr>
+      <tr><td>Помогите, пожалуйста</td><td>Qǐng bāngzhù wǒ</td><td>请帮助我</td></tr>
+      <tr><td>Где метро?</td><td>Dìtiě zài nǎlǐ?</td><td>地铁在哪里？</td></tr>
+      <tr><td>Я хочу заказать еду</td><td>Wǒ xiǎng diǎn cài</td><td>我想点菜</td></tr>
+      <tr><td>Счёт, пожалуйста</td><td>Mǎi dān</td><td>买单</td></tr>
+      <tr><td>Не остро</td><td>Bù yào là</td><td>不要辣</td></tr>
+      <tr><td>Это вкусно!</td><td>Hěn hǎochī!</td><td>很好吃！</td></tr>
+      <tr><td>Как добраться до...?</td><td>Zěnme qù...?</td><td>怎么去...？</td></tr>
+      <tr><td>Билет до Сианя</td><td>Qù Xī'ān de piào</td><td>去西安的票</td></tr>
+      <tr><td>Я не понимаю</td><td>Wǒ tīng bù dǒng</td><td>我听不懂</td></tr>
+      <tr><td>Вы говорите по-английски?</td><td>Nǐ huì shuō Yīngyǔ ma?</td><td>你会说英语吗？</td></tr>
+      <tr><td>Где находится отель?</td><td>Jiǔdiàn zài nǎlǐ?</td><td>酒店在哪里？</td></tr>
+      <tr><td>Покажите на карте</td><td>Qǐng zài dìtú shàng zhǐ</td><td>请在地图上指</td></tr>
+      <tr><td>Очень приятно!</td><td>Hěn gāoxìng!</td><td>很高兴！</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ===== CHECKLISTS ===== -->
+<section id="checklists" class="section" style="padding-top:20px;">
+  <h2 class="section-title">Чек-листы</h2>
+  <div class="section-divider"></div>
+  <p class="section-subtitle">Отметьте пункты перед поездкой</p>
+
+  <div class="checklist">
+    <h4>📄 Документы и виза</h4>
+    <label class="checklist-item"><input type="checkbox"><span>Загранпаспорт (срок действия не менее 6 месяцев)</span></label>
+    <label class="checklist-item"><input type="checkbox"><span>Распечатка брони отеля</span></label>
+    <label class="checklist-item"><input type="checkbox"><span>Обратный билет</span></label>
+    <label class="checklist-item"><input type="checkbox"><span>Медицинская страховка</span></label>
+    <label class="checklist-item"><input type="checkbox"><span>Копия паспорта (отдельно от оригинала)</span></label>
+  </div>
+
+  <div class="checklist">
+    <h4>🎒 Вещи</h4>
+    <label class="checklist-item"><input type="checkbox"><span>Универсальный адаптер для розеток</span></label>
+    <label class="checklist-item"><input type="checkbox"><span>Повербанк</span></label>
+    <label class="checklist-item"><input type="checkbox"><span>Наличные юани</span></label>
+    <label class="checklist-item"><input type="checkbox"><span>Удобная обувь для долгих прогулок</span></label>
+    <label class="checklist-item"><input type="checkbox"><span>Личные лекарства (с рецептом)</span></label>
+  </div>
+
+  <div class="checklist">
+    <h4>📱 Цифровая подготовка</h4>
+    <label class="checklist-item"><input type="checkbox"><span>Установить Alipay и привязать карту</span></label>
+    <label class="checklist-item"><input type="checkbox"><span>Установить Amap (Gaode Maps)</span></label>
+    <label class="checklist-item"><input type="checkbox"><span>Установить DiDi (такси)</span></label>
+    <label class="checklist-item"><input type="checkbox"><span>Скачать офлайн-карты</span></label>
+    <label class="checklist-item"><input type="checkbox"><span>Установить переводчик (Яндекс / Google)</span></label>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h5>Контакты</h5>
+        <div class="footer-contacts">
+          <p>📧 <a href="mailto:egorovaalina20o01@gmail.com">egorovaalina20o01@gmail.com</a></p>
+          <p>📞 <a href="tel:+79965369446">8 (996) 536-94-46</a></p>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Навигация</h5>
+        <a href="#home">Главная</a>
+        <a href="#shanghai">Шанхай</a>
+        <a href="#xian">Сиань</a>
+        <a href="#practice">Практика</a>
+        <a href="#phrasebook">Разговорник</a>
+        <a href="#checklists">Чек-листы</a>
+      </div>
+      <div class="footer-col">
+        <h5>О проекте</h5>
+        <p style="font-size:0.9rem;color:var(--salad);">Тревел-гайд по Китаю — проектная работа Алены Егоровой, 9 класс. Шанхай и Сиань: достопримечательности, кухня, практические советы.</p>
+      </div>
+    </div>
+
+    <div class="footer-sources">
+      <h5>📚 Источники</h5>
+      <a href="https://russian.shanghai.gov.cn/" target="_blank">russian.shanghai.gov.cn</a>
+      <a href="https://www.visitxian.cn/" target="_blank">visitxian.cn</a>
+      <a href="https://commons.wikimedia.org/" target="_blank">Wikimedia Commons</a>
+      <a href="https://ru.trip.com/" target="_blank">Trip.com</a>
+      <a href="https://www.tourister.ru/" target="_blank">Tourister.ru</a>
+      <a href="https://en.wikipedia.org/wiki/The_Bund" target="_blank">Wikipedia: The Bund</a>
+      <a href="https://en.wikipedia.org/wiki/Yu_Garden" target="_blank">Wikipedia: Yu Garden</a>
+      <a href="https://en.wikipedia.org/wiki/Fortifications_of_Xi%27an" target="_blank">Wikipedia: Xi'an City Wall</a>
+      <a href="https://en.wikipedia.org/wiki/Giant_Wild_Goose_Pagoda" target="_blank">Wikipedia: Giant Wild Goose Pagoda</a>
+      <a href="https://en.wikipedia.org/wiki/Xi%27an_Muslim_Quarter" target="_blank">Wikipedia: Xi'an Muslim Quarter</a>
+      <a href="https://www.chinadiscovery.com/shanghai/nanjing-road.html" target="_blank">ChinaDiscovery: Nanjing Road</a>
+      <a href="https://www.chinadiscovery.com/shanghai/skyline.html" target="_blank">ChinaDiscovery: Shanghai Skyline</a>
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 Китай с Алиной Егоровой · Проектная работа · Все изображения из Wikimedia Commons (свободная лицензия)
+    </div>
+  </div>
+</footer>
+
+<script>
+// Checklist toggle
+document.querySelectorAll('.checklist-item input[type="checkbox"]').forEach(cb => {
+  cb.addEventListener('change', function() {
+    this.parentElement.classList.toggle('checked', this.checked);
+  });
+});
+
+// Smooth scroll for navbar links
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth' });
+      document.querySelector('.navbar-links').classList.remove('active');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
